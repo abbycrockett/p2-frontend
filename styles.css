@@ -1,0 +1,117 @@
+body {
+    background-color: #052a3e;
+    font-family: 'Inter', sans-serif;
+    color: white;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* NAVIGATION BAR AND LOGO */
+
+.nav-bar {
+    background-color: #7B1329;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 32px;
+    display: flex;
+    height: 88px;
+}
+
+.nav-links a {
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+    margin: 0 10px;
+    line-height: 29.05px; 
+} /* list & add course */
+
+.nav-bar .logo img {
+    height: 105px;
+}
+
+h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 17px;
+    background: #021E2C;
+    text-align: center;
+    width: 90%; 
+    max-width: 1148px; 
+    margin: 0 auto; 
+    color: white; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* INFO TO BE FILLED IN */
+
+.fill-in-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.fill-in {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.fill-in label {
+    font-size: 36px;
+    display: block;
+}
+
+.fill-in input[type="text"],
+.fill-in select {
+    color: white;
+    width: calc(100% - 50px);
+    padding: 10px;
+    font-size: 24px;
+    margin: 10px 0;
+    background: #084565;
+    border: 1px solid #099ACE;
+    border-radius: 4px;
+}
+
+.fill-in input[type="text"]::placeholder {
+    color: #118ACB;
+    opacity: 1; 
+}
+
+.fill-in select::placeholder {
+    color: #118ACB;
+}
+
+.mandatory {
+    color: #e1234b;
+    font-size: 48px;
+    vertical-align: top;
+}
+
+/* BUTTONS */
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.save-button, 
+.cancel-button {
+    width: 200px;
+    height: 56px;
+    text-align: center;
+    font-size: 24px;
+    color: white;
+    background-color: #118acb;
+    border-radius: 22px;
+    border: none;
+    padding: 10px;
+}
+
+.cancel-button:hover,
+.save-button:hover {
+    background-color: #106ba3;
+}
