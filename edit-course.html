@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Course</title>
+    <link rel="icon" type="image/x-icon" href="./assets/courseCraft.ico">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+
+<body>
+  
+    <!--NAVIGATION BAR -->
+    <div class="nav-bar">
+
+        <div class="logo">
+            <img src="./assets/courseCraft.png" alt="Course Craft logo">
+        </div>
+
+        <div class="nav-links">
+            <a href="index.html">LIST</a>
+            <a href="add-course.html">ADD COURSE</a>
+        </div>
+    </div>
+    <!--NAVIGATION BAR -->
+
+    <br><br>
+    <h1>EDIT COURSE</h1>
+
+    <!-- USER FILLS IN COURSE INFO HERE -->
+    <div class="fill-in-container">
+        <form>
+            <div class="fill-in">
+                <label for="courseTitle">Course Title:</label>
+                <input type="text" id="courseTitle" name="courseTitle" placeholder="Programming I" required>
+                <span class="mandatory">*</span>
+
+                <br> <br>
+
+                <label for="courseNumber">Course Number:</label>
+                <input type="text" id="courseNumber" name="courseNumber" placeholder="CMSC-123">
+
+                <br> <br>
+  
+                <label for="roomNumber">Room Number:</label>
+                <input type="text" id="roomNumber" name="roomNumber" placeholder="Building 123">
+
+                <br> <br>
+
+                <label for="professor">Professor:</label>
+                <input type="text" id="professor" name="professor" placeholder="John Doe">
+          
+                <br> <br>
+           
+                <label for="term">Term:</label>
+                <select id="term" name="term">
+                    <option value="Spring">Spring</option>
+                    <option value="Summer">Summer</option>
+                    <option value="Fall">Fall</option>
+                    <option value="Winter">Winter</option>
+                </select>
+
+                <br> <br>
+
+                <label for="year">Year:</label>
+                <input type="text" id="year" name="year" placeholder="2024">
+            
+                <br> <br>
+
+                <label for="grade">Grade:</label>
+                <input type="text" id="grade" name="grade" placeholder="100">
+            </div>
+
+            <div class="buttons">
+                <a href="index.html">
+                    <button type="button" class="cancel-button">CANCEL</button>
+                </a>
+                <button type="submit" class="save-button">SAVE</button>
+            </div>
+            
+        </form>
+    </div>
+</body>
+
+</html>
