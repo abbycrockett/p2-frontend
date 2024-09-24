@@ -19,14 +19,39 @@
         </div>
 
         <div class="nav-links">
-            <a href=index.html">LIST</a>
+            <a href="index.html">LIST</a>
             <a href="add-course.html">ADD COURSE</a>
         </div>
     </div>
     <!--NAVIGATION BAR -->
 
     <br>
-    <h1>Hello {Username} </h1>
+    <h1>Course List </h1>
+    <br>
+    <div class="table-container">
+        <table class="course-table">
+            <tr>
+                <th>Course Number</th>
+                <th>Course Name</th>
+                <th>Term</th>
+                <th>Actions</th>
+            </tr>
+            <tr>
+                <td>CMSC-123</td>
+                <td>Programming I</td>
+                <td>Fall</td>
+                <td>
+                    <button type="submit" class="update-button">UPDATE</button>
+                    <button type="submit" class="delete-button">DELETE</button>
+                    <a href="view-course.html">
+                        <button type="submit" class="view-button">VIEW</button>
+                    </a>
+                    
+                </td>
+            </tr>
+        </table>
+    </div>
+    
 
 </body>
 </html>
