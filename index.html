@@ -7,17 +7,12 @@
     <link rel="icon" type="image/x-icon" href="./assets/courseCraft.ico">
     <link rel="stylesheet" href="styles.css">
 </head>
-
-
 <body>
-  
     <!--NAVIGATION BAR -->
     <div class="nav-bar">
-
         <div class="logo">
             <img src="./assets/courseCraft.png" alt="Course Craft logo">
         </div>
-
         <div class="nav-links">
             <a href="index.html">LIST</a>
             <a href="add-course.html">ADD COURSE</a>
@@ -26,32 +21,35 @@
     <!--NAVIGATION BAR -->
 
     <br>
-    <h1>Course List </h1>
+    <h1>Course List</h1>
     <br>
-    <div class="table-container">
-        <table class="course-table">
-            <tr>
-                <th>Course Number</th>
-                <th>Course Name</th>
-                <th>Term</th>
-                <th>Actions</th>
-            </tr>
-            <tr>
-                <td>CMSC-123</td>
-                <td>Programming I</td>
-                <td>Fall</td>
-                <td>
-                    <button type="submit" class="update-button">UPDATE</button>
-                    <button type="submit" class="delete-button">DELETE</button>
-                    <a href="view-course.html">
-                        <button type="submit" class="view-button">VIEW</button>
-                    </a>
-                    
-                </td>
-            </tr>
-        </table>
-    </div>
-    
+    <br>
 
+    <table class="course-table">
+        <tr>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Number</th>
+            <th>Level</th>
+            <th>Hours</th>
+            <th>Actions</th>
+        </tr>
+        <tr>
+            <td>Programming I</td>
+            <td>CMSC</td>
+            <td>1234</td>
+            <td>01</td>
+            <td>3</td>
+            <td>
+                <div class="button-container">
+                    <button type="button" class="update-button">UPDATE</button>
+                    <button type="button" class="delete-button">DELETE</button>
+                    <a href="view-course.html">
+                        <button type="button" class="view-button">VIEW</button>
+                    </a>
+                </div>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>
