@@ -44,6 +44,40 @@
       NavBar,
     },
   };
+
+  var id;
+
+  function urlParam(name) {
+      var results = new RegExp("[\?&]" + name + "=([^&#]*)").exec(
+        window.location.href
+      );
+      if (results == null) {
+        return null;
+      } else {
+        return results[1] || 0;
+      }
+    }
+
+  document.onreadystatechange = function () {
+      if (document.readyState === "complete") {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+          if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+            var response = JSON.parse(this.responseText);
+            id = response.list.id;
+            document.getElementById("name").value = response.list.name;
+            document.getElementById("dept").value = response.list.dept;
+            document.getElementById("number").value = response.list.number;
+            document.getElementById("level").value = response.list.level;
+            document.getElementById("hours").value = response.list.hours;
+            document.getElementById("description").value = response.list.description;
+          }
+        };
+        //unknown path
+        xmlhttp.open("GET", "/todoapi/lists/" + urlParam("id"));
+        xmlhttp.send();
+      }
+    };
   </script>
   
   <style scoped>
