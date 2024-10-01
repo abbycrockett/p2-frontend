@@ -19,7 +19,13 @@ jobs:
           node-version: 18
       - run: npm install
       - run: npm run build
-      - run: npm run bundle
+      - run: |
+          # Ensure .env file exists before moving
+          if [ -f .env ]; then
+            mv .env dist
+          else
+            echo ".env file does not exist, skipping move"
+          fi
       
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@v2.1.1
