@@ -1,8 +1,9 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vuetify from 'vite-plugin-vuetify'
-
 import dns from 'dns'
+import path from 'path'
+
 dns.setDefaultResultOrder('verbatim')
 
 export default () => {
@@ -16,6 +17,12 @@ export default () => {
       port: 8081
     },
 
-    base: baseURL
+    base: baseURL,
+
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, 'src'), // Ensure `@` points to 'src' directory
+      },
+    },
   })
 }
