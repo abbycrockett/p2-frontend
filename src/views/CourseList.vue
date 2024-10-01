@@ -10,11 +10,11 @@ const user = Utils.getStore("user");
 const message = ref("Search, Edit or Delete Tutorials");
 
 const editCourse = (course) => {
-  router.push({ name: "EditCourse", params: { id: course.id } });
+  router.push({ name: "edit", params: { id: course.id } });
 };
 
 const viewCourse = (course) => {
-  router.push({ name: "ViewCourse", params: { id: course.id } });
+  router.push({ name: "view", params: { id: course.id } });
 };
 
 const deleteCourse = (course) => {
