@@ -1,0 +1,28 @@
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import vuetify from 'vite-plugin-vuetify'
+import dns from 'dns'
+import path from 'path'
+
+dns.setDefaultResultOrder('verbatim')
+
+export default () => {
+  const baseURL = process.env.APP_ENV === 'development' ? '/' : '/p2-frontend/'
+
+  return defineConfig({
+    plugins: [vue(), vuetify({ autoImport: true })],
+
+    server: {
+      host: 'localhost',
+      port: 8081
+    },
+
+    base: baseURL,
+
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, 'src'), // Ensure `@` points to 'src' directory
+      },
+    },
+  })
+}

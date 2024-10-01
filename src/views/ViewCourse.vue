@@ -1,6 +1,7 @@
 <template>
     <div>
       <NavBar />
+      <br>
       <h1>VIEW COURSE</h1>
       <div class="fill-in-container">
         <form>
