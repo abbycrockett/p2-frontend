@@ -1,24 +1,23 @@
+// src/services/services.js
 import axios from "axios";
 import Utils from "../config/utils.js";
 import AuthServices from "./authServices.js";
 import Router from "../router.js";
 
-var baseurl = "";
-if (import.meta.env.DEV) {
-  baseurl = "http://localhost/course-t5/";
-} else {
-  baseurl = "/course-t5/";
-}
+const baseURL = "http://localhost:3015/course-t5";
+const headers = {
+  Accept: "application/json",
+  "Content-Type": "application/json",
+  "X-Requested-With": "XMLHttpRequest",
+  "Access-Control-Allow-Origin": "*",
+  crossDomain: true,
+};
 
 const apiClient = axios.create({
-  baseURL: baseurl,
-  headers: {
-    Accept: "application/json",
-    "Content-Type": "application/json",
-    "X-Requested-With": "XMLHttpRequest",
-    "Access-Control-Allow-Origin": "*",
-    crossDomain: true,
-  },
+  
+  baseURL: baseURL,
+  headers: headers,
+
   transformRequest: (data, headers) => {
     let user = Utils.getStore("user");
     if (user != null) {
@@ -31,9 +30,6 @@ const apiClient = axios.create({
   },
   transformResponse: function (data) {
     data = JSON.parse(data);
-    // if (!data.success && data.code == "expired-session") {
-    //   localStorage.deleteItem("user");
-    // }
     if (data.message !== undefined && data.message.includes("Unauthorized")) {
       AuthServices.logoutUser(Utils.getStore("user"))
         .then((response) => {
@@ -44,9 +40,7 @@ const apiClient = axios.create({
         .catch((error) => {
           console.log("error", error);
         });
-      // Utils.removeItem("user")
     }
-    // console.log(Utils.getStore("user"))
     return data;
   },
 });
