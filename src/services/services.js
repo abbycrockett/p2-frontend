@@ -1,10 +1,10 @@
 import axios from "axios";
 import Utils from "../config/utils.js";
-import Router from "../router.js";
+import Router from "../router/index.js";
 
 var baseurl = "";
 if (import.meta.env.DEV) {
-  baseurl = "http://localhost/course-t5/";
+  baseurl = "http://localhost:3015/course-t5/";
 } else {
   baseurl = "/course-t5/";
 }

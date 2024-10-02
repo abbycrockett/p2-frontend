@@ -30,7 +30,7 @@ const deleteCourse = (course) => {
 const retrieveCourses = () => {
   courseServices.getAll()
     .then((response) => {
-      course.value = response.data;
+      courses.value = response.data;
     })
     .catch((e) => {
       message.value = e.response.data.message;
@@ -66,8 +66,8 @@ retrieveCourses();
                     <td>{{ item.hours }}</td>
                     <td>
                         <button @click="editCourse(item)">Edit</button>
-                        <button @click="viewCourse(item)">Edit</button>
-                        <button @click="deleteCourse(item)">Edit</button>
+                        <button @click="viewCourse(item)">View</button>
+                        <button @click="deleteCourse(item)">Delete</button>
                     </td>
                     </tr>
                 </tbody>
