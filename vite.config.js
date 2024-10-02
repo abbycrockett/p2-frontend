@@ -8,7 +8,8 @@ import path from 'path'
 dns.setDefaultResultOrder('verbatim')
 
 export default () => {
-  const baseURL = process.env.NODE_ENV === 'development' ? '/' : '/p2-frontend/';
+  // Adjusting the base URL according to the deployment path
+  const baseURL = process.env.NODE_ENV === 'development' ? '/' : '/2024/project2/t5/';
 
   return defineConfig({
     plugins: [vue(), vuetify({ autoImport: true })],
@@ -38,6 +39,7 @@ export default () => {
           chunkFileNames: 'js/[name].js',
           assetFileNames: 'assets/[name].[ext]',
         },
+        input: path.resolve(__dirname, 'index.html'), // Ensure Vite knows the entry point
       },
     },
   })
