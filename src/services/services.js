@@ -1,17 +1,14 @@
 // src/services/services.js
 import axios from "axios";
 import Utils from "../config/utils.js";
-import AuthServices from "./authServices.js";
-import Router from "../router.js";
+import Router from "../router/index.js
 
-const baseURL = "http://localhost:3015/course-t5";
-const headers = {
-  Accept: "application/json",
-  "Content-Type": "application/json",
-  "X-Requested-With": "XMLHttpRequest",
-  "Access-Control-Allow-Origin": "*",
-  crossDomain: true,
-};
+var baseurl = "";
+if (import.meta.env.DEV) {
+  baseurl = "http://localhost:3015/course-t5/";
+} else {
+  baseurl = "/course-t5/";
+}
 
 const apiClient = axios.create({
   
