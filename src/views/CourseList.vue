@@ -1,3 +1,44 @@
+<script setup>
+import courseServices from "../services/courseServices.js";
+import Utils from "../config/utils.js";
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+const courses = ref([]);
+const user = Utils.getStore("user");
+const message = ref("Search, Edit or Delete Tutorials");
+
+const editCourse = (course) => {
+  router.push({ name: "edit", params: { id: course.id } });
+};
+
+const viewCourse = (course) => {
+  router.push({ name: "view", params: { id: course.id } });
+};
+
+const deleteCourse = (course) => {
+  courseServices.delete(course.id)
+    .then(() => {
+      retrieveCourses();
+    })
+    .catch((e) => {
+      message.value = e.response.data.message;
+    });
+};
+
+const retrieveCourses = () => {
+  courseServices.getAll()
+    .then((response) => {
+      courses.value = response.data;
+    })
+    .catch((e) => {
+      message.value = e.response.data.message;
+    });
+};
+
+retrieveCourses();
+</script>
 <template>
     <div>
         <NavBar />
@@ -17,21 +58,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Programming I</td>
-                        <td>CMSC</td>
-                        <td>1234</td>
-                        <td>01</td>
-                        <td>3</td>
-                        <td>
-                            <div class="button-container">
-                                <button type="button" class="update-button">UPDATE</button>
-                                <button type="button" class="delete-button">DELETE</button>
-                                <router-link to="/view-course">
-                                    <button type="button" class="view-button">VIEW</button>
-                                </router-link>
-                            </div>
-                        </td>
+                    <tr v-for="(item, index) in courses" :key="item.id">
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.department }}</td>
+                    <td>{{ item.number }}</td>
+                    <td>{{ item.level }}</td>
+                    <td>{{ item.hours }}</td>
+                    <td>
+                        <button @click="editCourse(item)">Edit</button>
+                        <button @click="viewCourse(item)">View</button>
+                        <button @click="deleteCourse(item)">Delete</button>
+                    </td>
                     </tr>
                 </tbody>
             </table>
