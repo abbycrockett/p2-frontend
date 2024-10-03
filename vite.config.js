@@ -16,7 +16,7 @@ export default () => {
 
     server: {
       host: 'localhost',
-      port: 3015,
+      port: 8081,
     },
 
     // Define base path for production
