@@ -1,7 +1,7 @@
 // src/services/services.js
 import axios from "axios";
 import Utils from "../config/utils.js";
-import Router from "../router/index.js
+import Router from "../router/index.js";
 
 var baseurl = "";
 if (import.meta.env.DEV) {
