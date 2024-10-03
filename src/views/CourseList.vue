@@ -17,6 +17,7 @@ const viewCourse = (course) => {
   router.push({ name: "view", params: { id: course.id } });
 };
 
+
 const deleteCourse = (course) => {
   courseServices.delete(course.id)
     .then(() => {
