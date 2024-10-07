@@ -23,9 +23,10 @@ const router = createRouter({
       component: EditCourse
     },
     {
-      path: '/view-course',
+      path: '/view-course/:id',
       name: 'ViewCourse',
-      component: ViewCourse
+      component: ViewCourse,
+      props: true,
     },
   ]
 });

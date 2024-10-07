@@ -72,7 +72,8 @@ h1 {
 }
 
 .fill-in input[type="text"],
-.fill-in select {
+.fill-in select,
+.fill-in p {
     color: white;
     width: calc(100% - 50px);
     padding: 10px;
