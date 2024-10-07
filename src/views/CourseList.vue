@@ -63,7 +63,7 @@ retrieveCourses();
                     <tr v-for="(item, index) in courses" :key="item.id">
                     <td>{{ item.name }}</td>
                     <td>{{ item.department }}</td>
-                    <td>{{ item.number }}</td>
+                    <td>{{ item.courseNumber }}</td>
                     <td>{{ item.level }}</td>
                     <td>{{ item.hours }}</td>
                     <td>

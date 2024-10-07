@@ -9,7 +9,7 @@
   
   <script>
   import NavBar from "@/components/NavBar.vue";
-  import CourseForm from "@/components/CourseForm.vue";
+  import CourseForm from "@/components/AddCourseForm.vue";
   
   export default {
     components: {

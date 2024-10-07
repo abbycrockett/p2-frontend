@@ -18,16 +18,17 @@ const router = createRouter({
       component: AddCourse
     },
     {
-      path: '/edit-course',
-      name: 'EditCourse',
+      path: '/edit-course/:id',
+      name: 'edit',
       component: EditCourse
     },
     {
-      path: '/view-course',
-      name: 'ViewCourse',
+      path: '/view-course/:id',
+      name: 'view',
       component: ViewCourse
     },
   ]
 });
 
 export default router;
+
