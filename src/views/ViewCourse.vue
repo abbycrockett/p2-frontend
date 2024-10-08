@@ -1,52 +1,59 @@
+<!-- src/views/EditCourse.vue -->
 <template>
-    <div>
-      <NavBar />
-      <br>
-      <h1>VIEW COURSE</h1>
-      <div class="fill-in-container">
-        <form>
-          <div class="fill-in">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" value="Programming I" readonly />
-            <span class="mandatory">*</span>
-            <br><br>
-            <label for="dept">Department:</label>
-            <input type="text" id="dept" name="dept" value="CMSC" readonly />
-            <br><br>
-            <label for="number">Number:</label>
-            <input type="text" id="number" name="number" value="1234" readonly />
-            <br><br>
-            <label for="level">Level:</label>
-            <input type="text" id="level" name="level" value="01" readonly />
-            <br><br>
-            <label for="hours">Hours:</label>
-            <input type="text" id="hours" name="hours" value="3" readonly />
-            <label for="description">Description:</label>
-            <input type="text" id="description" name="description" readonly />
-          </div>
-          <div class="buttons">
-            <router-link to="/">
-              <button type="button" class="cancel-button">CANCEL</button>
-            </router-link>
-            <router-link to="/edit-course">
-              <button type="button" class="edit-button">EDIT</button>
-            </router-link>
-          </div>
-        </form>
-      </div>
+  <div>
+    <NavBar />
+    <br> <br>
+    <h1>VIEW COURSE</h1>
+    <div v-if="course">
+      <CourseForm :course="course" />
     </div>
-  </template>
-  
-  <script>
-  import NavBar from "@/components/NavBar.vue";
-  
-  export default {
-    components: {
-      NavBar,
-    },
-  };
-  </script>
-  
-  <style scoped>
-  @import '@/assets/styles.css';
-  </style>  
+    <div v-else>
+      <p>Loading course details...</p>
+    </div>
+  </div>
+</template>
+
+<script>
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import courseServices from '../services/courseServices.js';
+import NavBar from "@/components/NavBar.vue";
+import CourseForm from "@/components/ViewCourseForm.vue";
+
+export default {
+  components: {
+    NavBar,
+    CourseForm,
+  },
+  setup() {
+    const route = useRoute();
+    const course = ref(null);
+
+    const getCourse = async (id) => {
+      try {
+        const response = await courseServices.get(id);
+        course.value = response.data;
+      } catch (error) {
+        console.error('Failed to retrieve course data:', error.message);
+      }
+    };
+
+    onMounted(() => {
+      const courseId = route.params.id;
+      if (courseId) {
+        getCourse(courseId);
+      } else {
+        console.error('No course ID provided in route');
+      }
+    });
+
+    return {
+      course,
+    };
+  }
+};
+</script>
+
+<style scoped>
+@import '@/assets/styles.css';
+</style>
