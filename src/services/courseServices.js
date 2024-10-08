@@ -7,11 +7,11 @@ export default {
   get(id) {
     return apiClient.get(`/courses/${id}`);
   },
-  create(data) {
-    return apiClient.post("/courses", data);
+  create(course) {
+    return apiClient.post("/courses", course);
   },
-  update(id, data) {
-    return apiClient.put(`/courses/${id}`, data);
+  update(id, course) {
+    return apiClient.put(`/courses/${id}`, course);
   },
   delete(id) {
     return apiClient.delete(`/courses/${id}`);
@@ -20,3 +20,23 @@ export default {
     return apiClient.delete(`/courses`);
   },
 };
+
+/*
+export default {
+  getCourses() {
+    return apiClient.get("/courses");
+  },
+  getCourse(id) {
+    return apiClient.get("/courses/" + id);
+  },
+  addCourse(course) {
+    return apiClient.post("/courses", course);
+  },
+  updateCourse(courseId, course) {
+    return apiClient.put("/courses/" + courseId, course);
+  },
+  deleteCourse(id) {
+    return apiClient.delete("/courses/" + id);
+  },
+};
+*/

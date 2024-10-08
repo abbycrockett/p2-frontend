@@ -2,6 +2,7 @@
 <template>
   <div>
     <NavBar />
+    <br> <br>
     <h1>EDIT COURSE</h1>
     <div v-if="course">
       <CourseForm :course="course" />
