@@ -32,7 +32,17 @@
   </template>
   
   <script>
-  export default {};
+  export default function getInfo(){
+    const courseinfo = {
+      name : document.getElementById("name").value,
+      courseNumber : document.getElementById("number").value,
+      level : document.getElementById("level").value,
+      department : document.getElementById("dept").value,
+      description : document.getElementById("description").value,
+      hours : document.getElementById("hours").value
+    }
+    return courseinfo;
+  }
   </script>
   
   <style scoped>
