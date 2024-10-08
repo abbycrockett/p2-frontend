@@ -1,4 +1,3 @@
-/* src/components/AddCourseForm.vue */
 <template>
   <div class="fill-in-container">
     <form @submit.prevent="submitForm">
@@ -8,16 +7,16 @@
         <span class="mandatory">*</span>
         <br><br>
         <label for="dept">Department:</label>
-        <input type="text" id="dept" v-model="course.dept" placeholder="CMSC" />
+        <input type="text" id="dept" v-model="course.department" placeholder="CMSC" required />
         <br><br>
         <label for="number">Number:</label>
-        <input type="text" id="number" v-model="course.number" placeholder="1234" />
+        <input type="text" id="number" v-model="course.courseNumber" placeholder="1234" required />
         <br><br>
         <label for="level">Level:</label>
-        <input type="text" id="level" v-model="course.level" placeholder="01" />
+        <input type="text" id="level" v-model="course.level" placeholder="01" required />
         <br><br>
         <label for="hours">Hours:</label>
-        <input type="text" id="hours" v-model="course.hours" placeholder="3" />
+        <input type="text" id="hours" v-model="course.hours" placeholder="3" required />
         <br><br>
         <label for="description">Description:</label>
         <input type="text" id="description" v-model="course.description" placeholder="Type here" />
@@ -34,32 +33,50 @@
 </template>
 
 <script>
+import courseServices from '@/services/courseServices';
+import { useRouter } from 'vue-router';
+import { ref } from 'vue';
+
 export default {
-  data() {
-    return {
-      course: {
-        name: '',
-        dept: '',
-        number: '',
-        level: '',
-        hours: '',
-        description: ''
+  setup() {
+    const router = useRouter();
+    const course = ref({
+      name: '',
+      department: '',
+      courseNumber: '',
+      level: '',
+      hours: '',
+      description: ''
+    });
+
+    const submitForm = () => {
+      if (
+        !course.value.name ||
+        !course.value.department ||
+        !course.value.courseNumber ||
+        !course.value.level ||
+        !course.value.hours
+      ) {
+        alert("Please input all required fields");
+        return;
       }
+
+      console.log("Submitting course:", course.value); // Debugging line to check data
+
+      courseServices.create(course.value)
+        .then(() => {
+          console.log("Course created successfully");
+          router.push({ name: "CourseList" });
+        })
+        .catch((error) => {
+          console.error("Error creating course:", error);
+          alert("Failed to create course. Please try again.");
+        });
     };
-  },
-  methods: {
-    submitForm() {
-      // Logic to handle form submission
-      console.log("Form Submitted", this.course);
-      // Reset the form after submission
-      this.course = {
-        name: '',
-        dept: '',
-        number: '',
-        level: '',
-        hours: '',
-        description: ''
-      };
+
+    return {
+      course,
+      submitForm
     }
   }
 };

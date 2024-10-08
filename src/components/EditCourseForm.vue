@@ -7,7 +7,7 @@
         <span class="mandatory">*</span>
         <br /><br />
         <label for="dept">Department:</label>
-        <input type="text" id="dept" v-model="formData.dept" />
+        <input type="text" id="dept" v-model="formData.department" />
         <br /><br />
         <label for="number">Number:</label>
         <input type="text" id="number" v-model="formData.courseNumber" />
@@ -41,7 +41,7 @@ const router = useRouter();
 const route = useRoute();
 
 const formData = ref({
-  dept: "",
+  department: "",
   courseNumber: "",
   level: "",
   hours: "",
@@ -57,7 +57,7 @@ onMounted(async () => {
       const course = response.data;
       if (course) {
         formData.value = {
-          dept: course.dept || "",
+          department: course.department || "",
           courseNumber: course.courseNumber || "",
           level: course.level || "",
           hours: course.hours || "",
@@ -76,7 +76,7 @@ const submitForm = () => {
   const courseId = parseInt(route.params.id, 10);
 
   if (
-    !formData.value.dept ||
+    !formData.value.department ||
     !formData.value.courseNumber ||
     !formData.value.level ||
     !formData.value.hours ||
