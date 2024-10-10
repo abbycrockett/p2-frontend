@@ -24,7 +24,7 @@
       </div>
       <div class="buttons">
         <router-link to="/">
-          <button class="cancel-button">CANCEL</button>
+          <button class="cancel-button">BACK</button>
         </router-link>
         <button type="button" class="edit-button" @click="editCourse">EDIT</button>
       </div>
